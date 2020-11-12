@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
-    "database": "test_db",
+    "password": "G@rtail181993",
+    "database": "passport_demo",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
@@ -14,7 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-   "use_env_variable": "JAWSDB_URL",
-   "dialect": "mysql"
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   }
 }
