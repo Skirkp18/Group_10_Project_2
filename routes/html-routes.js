@@ -29,7 +29,7 @@ module.exports = function(app) {
    // THIS IS WHERE WE WILL ROUTE TO THE USERS PAGE TO SHOW GYM OR COVID STATS!!! 
    // ===========================================================================
    app.get("/members", isAuthenticated, (req, res) => {
-      res.sendFile(path.join(__dirname, "../public/members.html"));
+      res.sendFile(path.join(__dirname, "../public/account.html"));
    });
 
 };
