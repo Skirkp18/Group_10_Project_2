@@ -1,3 +1,24 @@
+const express = require("express");
+const apiRoutes = require("./routes/api-routes");
+const htmlRoutes = require("./routes/html-routes");
+const db = require("./models");
+const seed = require("./utils/seed");
+const errorHandler = require("./utils/errorHandler");
+
+const PORT = process.env.PORT || 3000;
+const app = express();
+
+// ===================================
+// Good place for a logging middleware
+
+
+// ===================================
+
+
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
+
+// Parse application body
 // Requiring necessary npm packages
 var express = require("express");
 var session = require("express-session");
