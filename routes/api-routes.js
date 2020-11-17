@@ -7,7 +7,11 @@ module.exports = function (app) {
    // If the user has valid login credentials, send them to the members page.
    // Otherwise the user will be sent an error
    app.post("/api/login", passport.authenticate("local"),(req, res) => {
-      res.json(req.user);
+      // res.json(req.user);
+      if (req.user) {
+         res.render("account");
+      }
+      res.render("loginpage");
    });
    
    // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -23,7 +27,7 @@ module.exports = function (app) {
          zipCode: req.body.zipCode
       })
          .then((data) => {
-            console.log(data);
+            // console.log(data);
             res.redirect(307, "/api/login");
          })
          .catch((err) => {
@@ -35,7 +39,7 @@ module.exports = function (app) {
    // Route for logging user out
    app.get("/logout",(req, res) => {
       req.logout();
-      res.redirect("/");
+      res.render("loginpage");
    });
 
    // Route for getting some data about our user to be used client side
