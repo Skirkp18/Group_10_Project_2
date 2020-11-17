@@ -47,7 +47,7 @@ $(document).ready(() => {
       })
          // eslint-disable-next-line no-unused-vars
          .then((data) => {
-            window.location.replace("/account.html");
+            window.location.replace("/account");
             // If there's an error, handle it by throwing up a bootstrap alert
          })
          .catch(handleLoginErr);
