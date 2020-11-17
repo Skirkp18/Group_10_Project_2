@@ -20,8 +20,8 @@
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding  w3-blue"><i class="fa fa-weight-hanging fa-fw"></i>  Favorite Gyms</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-walking fa-fw"></i>  Favorite OutDoor Workouts</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-weight-hanging fa-fw"></i>  Favorite Gyms</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-walking fa-fw"></i>  Favorite OutDoor Workouts</a>
     <a class="navbar-brand" href="/logout">Logout</a>
   </div>
 </nav>
@@ -36,9 +36,11 @@
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
 
+
       <h1 id="name">Welcome To NYS Quarentine Coach {{firstName}} {{lastName}}</h1>
-      <br>
-      <h2>Gym's in your area (Zip Code: {{zipCode}}) can be open according to NYS COVID-19 regulations. (Information Gathered From NYS COVID-19 Api).</h2>
+    <br>
+    <h2>Gym's in your area (Zip Code: {{zipCode}}) are closed due to New York State COVID-19 regulations (Information Generated From NYS COVID-19 API).</h2>
+
 
 
 
