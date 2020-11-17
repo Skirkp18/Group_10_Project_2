@@ -24,7 +24,7 @@ module.exports = function (app) {
          password: req.body.password,
          firstName: req.body.firstName,
          lastName: req.body.lastName,
-         zipCode: req.body.zipCode
+         county: req.body.county
       })
          .then((data) => {
             // console.log(data);
@@ -56,7 +56,7 @@ module.exports = function (app) {
             id: req.user.id,
             firstName: req.user.firstName,
             lastName: req.user.lastName,
-            zipCode: req.user.zipCode
+            county: req.user.county
          };
          res.json(userData);
          // console.log(userData);
