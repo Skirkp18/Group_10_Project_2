@@ -5,31 +5,26 @@ const path = require("path");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
-
    app.get("/", (req, res) => {
-      // If the user already has an account send them to the members page
+      // If the user already has an account send them to the account page
       if (req.user) {
-         res.redirect("/members");
+         res.render("account");
       }
-      res.sendFile(path.join(__dirname, "../public/signup.html"));
+      res.render("loginpage");
    });
 
    app.get("/login", (req, res) => {
-      // If the user already has an account send them to the members page
+      // If the user already has an account send them to the account page
       if (req.user) {
-         res.redirect("/members");
+         res.render("account");
       }
-      res.sendFile(path.join(__dirname, "../public/login.html"));
+      res.render("loginpage");
    });
 
    // Here we've add our isAuthenticated middleware to this route.
    // If a user who is not logged in tries to access this route they will be redirected to the signup page
-
-
-   // THIS IS WHERE WE WILL ROUTE TO THE USERS PAGE TO SHOW GYM OR COVID STATS!!! 
-   // ===========================================================================
-   app.get("/members", isAuthenticated, (req, res) => {
-      res.sendFile(path.join(__dirname, "../public/account.html"));
+   app.get("/account", isAuthenticated, (req, res) => {
+      res.render("account.handlebars");
    });
 
 };
