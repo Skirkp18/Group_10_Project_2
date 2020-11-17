@@ -1,6 +1,15 @@
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
-const covidAPI = require("../public/js/apicall");
+// const apicall = require("../public/js/apicall");
+const appToken = "48doUWe4iYqYnEuRLh45oxEpk";
+
+const { JSDOM } = require( "jsdom" );
+const { data } = require("jquery");
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
+
+
+
 
 module.exports = function(app) {
    app.get("/", (req, res) => {
@@ -37,14 +46,35 @@ module.exports = function(app) {
          county: req.user.county
       };
 
-      console.log(covidAPI());
+      $.ajax({
+         url: "https://health.data.ny.gov/resource/xdss-u53e.json?county=" + userAccountInfoObj.county,
+         type: "GET",
+         data: {
+            "$limit" : 5000,
+            "$$app_token" : appToken
+         }
+      }).done((data) => {
+         console.log("Retrieved " + data.length + " records from the dataset!");
+         //   console.table(data);
+         const countyCOVIDData = data;
+         console.table(countyCOVIDData.slice(-1).pop());
+         const currentCOVIDData = countyCOVIDData.slice(-1).pop();
+         const numberOfTests = currentCOVIDData.total_number_of_tests;
+         //   console.log(numberOfTests);
+         const numberOfPositiveTests = currentCOVIDData.new_positives;
+         const inffectionPercentage = (numberOfPositiveTests/numberOfTests) * 100;
+           console.log(inffectionPercentage);
+         if (inffectionPercentage >= 4 ) {
+            res.render("account-gymclosed.handlebars", userAccountInfoObj);
+         } else {
+            res.render("account.handlebars", userAccountInfoObj);
+         }
+         // return inffectionPercentage;
+      });
 
-      const i = 1;
-      if (i !== 1) {
-         res.render("account-gymclosed.handlebars", userAccountInfoObj);
-      } else {
-         res.render("account.handlebars", userAccountInfoObj);
-      }
+
+
+
    });
 
 };
