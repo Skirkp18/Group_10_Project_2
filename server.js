@@ -24,7 +24,7 @@ const exphbs = require("express-handlebars");
 app.engine(
    "handlebars",
    exphbs({
-      defaultLayout: "main",
+      defaultLayout: "mainpage",
       partialsDir: __dirname + "/views/partials/"
    })
 );

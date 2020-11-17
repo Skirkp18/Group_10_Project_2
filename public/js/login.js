@@ -30,8 +30,9 @@ $(document).ready(() => {
          email: email,
          password: password
       })
-         .then(() => {
-            window.location.replace("/account.html");
+         .then((userData) => {
+            // console.log(userData);
+            window.location.replace("/account");
          // If there's an error, log the error
          })
          .catch((err) => {
