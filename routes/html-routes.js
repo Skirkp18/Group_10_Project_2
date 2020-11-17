@@ -1,6 +1,6 @@
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
-const userAccountInfo = require("../public/js/account.js");
+const covidAPI = require("../public/js/apicall");
 
 module.exports = function(app) {
    app.get("/", (req, res) => {
@@ -34,8 +34,10 @@ module.exports = function(app) {
          email: req.user.email,
          firstName: req.user.firstName,
          lastName: req.user.lastName,
-         zipCode: req.user.zipCode
+         county: req.user.county
       };
+
+      console.log(covidAPI());
 
       const i = 1;
       if (i !== 1) {
