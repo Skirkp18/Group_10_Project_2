@@ -5,7 +5,7 @@ $(document).ready(() => {
    const passwordInput = $("input#password-create");
    const firstNameInput = $("input#firstName-create");
    const lastNameInput = $("input#lastName-create");
-   const zipCodeInput = $("input#zipCode-create");
+   const countyInput = $("input#county-create");
 
 
 
@@ -18,32 +18,32 @@ $(document).ready(() => {
          password: passwordInput.val().trim(),
          firstName: firstNameInput.val().trim(),
          lastName: lastNameInput.val().trim(),
-         zipCode: zipCodeInput.val().trim(),
+         county: countyInput.val().trim(),
       };
 
-      if (!userData.email || !userData.password || !userData.firstName || !userData.zipCode) {
+      if (!userData.email || !userData.password || !userData.firstName || !userData.county) {
          return;
       }
       // If we have an email and password, run the signUpUser function
       // console.log(userData.password);
-      signUpUser(userData.email, userData.password, userData.firstName, userData.lastName, userData.zipCode);
+      signUpUser(userData.email, userData.password, userData.firstName, userData.lastName, userData.county);
       emailInput.val("");
       passwordInput.val("");
       firstNameInput.val("");
       lastNameInput.val("");
-      zipCodeInput.val("");
+      countyInput.val("");
    });
 
    // Does a post to the signup route. If successful, we are redirected to the members page
    // Otherwise we log any errors
    // eslint-disable-next-line no-unused-vars
-   function signUpUser(email, password, firstName, lastName, zipCode) {
+   function signUpUser(email, password, firstName, lastName, county) {
       $.post("/api/signup", {
          email: email,
          password: password,
          firstName: firstName,
          lastName: lastName,
-         zipCode: zipCode
+         county: county
       })
          // eslint-disable-next-line no-unused-vars
          .then((data) => {
