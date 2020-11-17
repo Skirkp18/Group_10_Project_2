@@ -31,7 +31,7 @@ $(document).ready(() => {
          password: password
       })
          .then(() => {
-            window.location.replace("/account");
+            window.location.replace("/account.html");
          // If there's an error, log the error
          })
          .catch((err) => {
