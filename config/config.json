@@ -2,10 +2,14 @@
   "development": {
     "username": "root",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "password": "Ruby2020$",
 =======
     "password": "Charles1919!",
 >>>>>>> 492d5f9ab024e0239fec762de0fe4f22ffd01dc4
+=======
+    "password": "Ruby2020$",
+>>>>>>> 904fa9f8e9242567fc4d7a3043f762e9af45b475
     "database": "users",
     "host": "127.0.0.1",
     "dialect": "mysql"
