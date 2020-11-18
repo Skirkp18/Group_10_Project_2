@@ -42,7 +42,7 @@ module.exports = function(app) {
       };
 
       $.ajax({
-         url: "https://health.data.ny.gov/resource/xdss-u53e.json?county=" + userAccountInfoObj.county,
+         url: "http://health.data.ny.gov/resource/xdss-u53e.json?county=" + userAccountInfoObj.county,
          type: "GET",
          data: {
             "$limit" : 5000,
@@ -65,7 +65,7 @@ module.exports = function(app) {
          userAccountInfoObj.numberOfTests = numberOfTests;
          userAccountInfoObj.testDate = currentCOVIDData.test_date;
          console.log(userAccountInfoObj);
-         if (inffectionPercentage >= 5 ) {
+         if (inffectionPercentage >= 4 ) {
             res.render("account-gymclosed.handlebars", userAccountInfoObj);
          } else {
             res.render("account.handlebars", userAccountInfoObj);
