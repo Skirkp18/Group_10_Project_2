@@ -61,8 +61,11 @@ module.exports = function(app) {
          // console.log(inffectionPercentage);
          const roundedInfectionRate = inffectionPercentage.toFixed(2);
          userAccountInfoObj.covidRate = roundedInfectionRate;
+         userAccountInfoObj.newPositives = numberOfPositiveTests;
+         userAccountInfoObj.numberOfTests = numberOfTests;
+         userAccountInfoObj.testDate = currentCOVIDData.test_date;
          console.log(userAccountInfoObj);
-         if (inffectionPercentage >= 4 ) {
+         if (inffectionPercentage >= 5 ) {
             res.render("account-gymclosed.handlebars", userAccountInfoObj);
          } else {
             res.render("account.handlebars", userAccountInfoObj);

@@ -30,6 +30,7 @@ $(document).ready(() => {
          email: email,
          password: password
       })
+         // eslint-disable-next-line no-unused-vars
          .then((User) => {
             // console.log(User);
             window.location.replace("/account");
