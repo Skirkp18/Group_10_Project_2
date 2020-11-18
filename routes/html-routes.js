@@ -1,6 +1,4 @@
-// Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
-// const apicall = require("../public/js/apicall");
 const appToken = "48doUWe4iYqYnEuRLh45oxEpk";
 
 const { JSDOM } = require( "jsdom" );
@@ -13,7 +11,6 @@ const $ = require( "jquery" )( window );
 
 module.exports = function(app) {
    app.get("/", (req, res) => {
-      // If the user already has an account send them to the account page
       if (req.user) {
 
          // IF STATEMENT AFTER CHECKING COVID RATE TO SEE IF TO GO TO GYM OR ACTIVITY PAGE (RIGHT NOW GOING TO MAIN ACCOUNT PAGE)
@@ -27,7 +24,6 @@ module.exports = function(app) {
    });
 
    app.get("/login", (req, res) => {
-      // If the user already has an account send them to the account page
       if (req.user) {
 
          // IF STATEMENT AFTER CHECKING COVID RATE TO SEE IF TO GO TO GYM OR ACTIVITY PAGE (RIGHT NOW GOING TO MAIN ACCOUNT PAGE)
@@ -36,8 +32,7 @@ module.exports = function(app) {
       res.render("loginpage");
    });
 
-   // Here we've add our isAuthenticated middleware to this route.
-   // If a user who is not logged in tries to access this route they will be redirected to the signup page
+
    app.get("/account", isAuthenticated, (req, res) => {
       const userAccountInfoObj = {
          email: req.user.email,
@@ -45,7 +40,16 @@ module.exports = function(app) {
          lastName: req.user.lastName,
          county: req.user.county
       };
-
+      
+      $.ajax({
+         url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.2994, 74.2179&type=gym&key=AIzaSyANcLOChoFLDu-OoosLY9pSa0KmhhGdOvc" + serAccountInfoObj.county + "county", 
+         type: "GET",
+         data: {
+            "$limit" : 5000,
+            "$$app_token" : appToken
+         }
+         })
+         
       $.ajax({
          url: "https://health.data.ny.gov/resource/xdss-u53e.json?county=" + userAccountInfoObj.county,
          type: "GET",
