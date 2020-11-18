@@ -16,6 +16,10 @@ body {
 margin-left: 35%;
 }
 
+.leftMap {
+ margin-top: 10%;
+  border: 2pt solid rgb(253, 253, 123);
+}
 
 form.signup,
 form.login {
@@ -25,6 +29,7 @@ form.login {
 
 #name {
   text-align: center;
+  border-bottom: 2pt solid rgb(253, 253, 123);
 }
 
 .Area {
