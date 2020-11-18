@@ -21,8 +21,8 @@ module.exports = function (sequelize, DataTypes) {
          lastName: {
             type: DataTypes.STRING,
          },
-         zipCode: {
-            type: DataTypes.INTEGER,
+         county: {
+            type: DataTypes.STRING,
             allowNull: false
          }
       });
