@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 // Import the model (burger.js) to use its database functions.
-const gym = require("../models/gym.js");
+const gym = require("../models/gyms.js");
 
-// Create all our routes and set up logic within those routes where required.
+// create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
   gym.all(function(data) {
     let hbsObject = {
