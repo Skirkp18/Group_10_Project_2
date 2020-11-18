@@ -2,30 +2,35 @@ const { JSDOM } = require( "jsdom" );
 const { window } = new JSDOM( "" );
 const $ = require( "jquery" )( window );
 
-module.exports = function nysAPICall(county) {
+const apiKeySecret = "16o6tlyye0c604y9z99qjatpf8x0665i38i3i4s22iepzipirx";
+const apiKey = "dwincu9gs5g4vkzesqg1iyavl";
+const appToken = "48doUWe4iYqYnEuRLh45oxEpk";
 
-   Date.prototype.yyyymmdd = function() {
-      const yyyy = this.getFullYear().toString();
-      const mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
-      const dd = this.getDate().toString();
-      return yyyy + "/" + (mm[1]?mm:"0"+mm[0]) + "/" + (dd[1]?dd:"0"+dd[0]); // padding
-   };
-  
-   const date = new Date();
-   console.log( date.yyyymmdd() );
-//    const searchDay = 15;
-//    $.ajax({
-//       url: "https://health.data.ny.gov/resource/xdss-u53e.json?test_date=" + yyyy + "-" + mm + "-" + searchDay + "T00:00.000?county=" + county,
-//       type: "GET",
-//       data: {
-//          "$limit" : 5000,
-//          "$$app_token" : "YOURAPPTOKENHERE"
-//       }
-//    }).done((data) => {
-//       alert("Retrieved " + data.length + " records from the dataset!");
-//       console.log(data);
-//    });
-
+function nysAPICall (county) {
+//    console.log(county);
+   $.ajax({
+      url: "https://health.data.ny.gov/resource/xdss-u53e.json?county=" + county,
+      type: "GET",
+      data: {
+         "$limit" : 5000,
+         "$$app_token" : appToken
+      }
+   }).done((data) => {
+      console.log("Retrieved " + data.length + " records from the dataset!");
+      //   console.table(data);
+      const countyCOVIDData = data;
+      console.table(countyCOVIDData.slice(-1).pop());
+      const currentCOVIDData = countyCOVIDData.slice(-1).pop();
+      const numberOfTests = currentCOVIDData.total_number_of_tests;
+    //   console.log(numberOfTests);
+      const numberOfPositiveTests = currentCOVIDData.new_positives;
+      const inffectionPercentage = (numberOfPositiveTests/numberOfTests) * 100;
+    //   console.log(inffectionPercentage);
+      return inffectionPercentage;
+   });
 };
+
+module.exports.nysAPICall = nysAPICall;
+
 
 
