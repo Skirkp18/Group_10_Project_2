@@ -65,7 +65,7 @@ module.exports = function(app) {
          userAccountInfoObj.numberOfTests = numberOfTests;
          userAccountInfoObj.testDate = currentCOVIDData.test_date;
          console.log(userAccountInfoObj);
-         if (inffectionPercentage >= 4 ) {
+         if (inffectionPercentage >= 5 ) {
             res.render("account-gymclosed.handlebars", userAccountInfoObj);
          } else {
             res.render("account.handlebars", userAccountInfoObj);
