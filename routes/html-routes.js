@@ -40,7 +40,16 @@ module.exports = function(app) {
          lastName: req.user.lastName,
          county: req.user.county
       };
-
+      
+      $.ajax({
+         url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.2994, 74.2179&type=gym&key=AIzaSyANcLOChoFLDu-OoosLY9pSa0KmhhGdOvc" + serAccountInfoObj.county + "county", 
+         type: "GET",
+         data: {
+            "$limit" : 5000,
+            "$$app_token" : appToken
+         }
+         })
+         
       $.ajax({
          url: "https://health.data.ny.gov/resource/xdss-u53e.json?county=" + userAccountInfoObj.county,
          type: "GET",
