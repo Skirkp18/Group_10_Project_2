@@ -31,49 +31,27 @@
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+<div class="w3-main container" style="margin-left:300px;margin-top:43px;">
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
 
       <h1 id="name">Welcome To NYS Quarentine Coach {{firstName}} {{lastName}}</h1>
       <br>
-      <div class="Area">
-      <h2>Gym's in your area (County: {{county}}) can be open according to NYS COVID-19 regulations. (Information Gathered From NYS COVID-19 Api).</h2></div>
-      <br>
-      
-      <div class="Area">
-      <h2 class="infectionRate">Current Inffection Rate: {{covidRate}}% </h2>
-      </div>
 
-
-
-
-
-
-
-
-
-
-    <!-- PUT INFO HERE -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      <h2>Gym's in your area (County: {{county}}) can be open according to NYS COVID-19 regulations. (Information Gathered From NYS COVID-19 Api).</h2>
   </header>
+
+
+    <div class="row">
+      <div class="col-md-6">
+    <h2>Current Inffection Rate: {{covidRate}}% </h2>
+      </div>
+      <div class="col-md-6">
+      <div id="map">
+      </div>
+      </div>
+  </div>
   <!-- Footer -->
         <footer>
     <div class="fb-share-button" data-href="https://group-10-project-2.herokuapp.com/" data-layout="button"
@@ -112,5 +90,27 @@ function w3_close() {
 }
 
 </script>
+
+<script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwqTBhoX7bakYR20wCIeTi1sfAFzmRXpM&callback=initMap&libraries=&v=weekly">
+</script>
+
+    <script>
+      // Initialize and add the map
+      function initMap() {
+        // The location of Uluru
+        const newYork = { lat: 43.2294, lng: -74.2179 };
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 4,
+          center: newYork,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+          position: newYork,
+          map: map,
+        });
+      }
+    </script>
 
 {{!-- <script type="text/javascript" src="js/account.js"></script> --}}

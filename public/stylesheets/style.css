@@ -32,18 +32,6 @@ form.login {
   border: 2pt solid rgb(253, 253, 123);
 }
 
-
-@media (min-width: 1200px) {
-  .container {
-    width: 990px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    width: 990px;
-  }
-}
-
 footer {
   width: 100%;
   background-color: black;
@@ -55,7 +43,23 @@ footer {
   margin-top: 75px;
 }
 
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
 
+@media (min-width: 1200px) {
+  .container {
+    width: 990px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 990px;
+  }
+}
 
 
 
