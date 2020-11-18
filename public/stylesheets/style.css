@@ -1,4 +1,61 @@
+body {
+  width: 100%;
+  background-color: rgb(187, 187, 187);
+  font-family: "Raleway", sans-serif
+}
+
+.jumbotron {
+  height: 100px;
+  background-color: black;
+  border-bottom: 5pt solid red;
+  /* align-content: center; */
+  font: 20px;
+}
+
+.QC  {
+margin-left: 35%;
+}
+
+
 form.signup,
 form.login {
   margin-top: 50px;
+  border: 2pt solid rgb(253, 253, 123);
 }
+
+#name {
+  text-align: center;
+}
+
+.Area {
+  text-align: center;
+  border: 2pt solid rgb(253, 253, 123);
+}
+
+
+@media (min-width: 1200px) {
+  .container {
+    width: 990px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 990px;
+  }
+}
+
+footer {
+  width: 100%;
+  background-color: black;
+  color: white;
+  border-top: 5pt solid  red;
+  padding-top: 20px;
+  text-align: center;
+  height: 15%;
+  margin-top: 75px;
+}
+
+
+
+
+
